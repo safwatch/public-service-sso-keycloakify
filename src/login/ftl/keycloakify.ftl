@@ -1,0 +1,1 @@
+<#-- Bridge file supaya FTL custom memanggil bundle React keycloakify -->

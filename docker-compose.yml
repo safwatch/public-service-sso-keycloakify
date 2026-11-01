@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+    keycloak:
+        build: .
+        image: sso-keycloak-theme:22.0.5
+        container_name: sso-civic-keycloak
+        environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: admin
+            KC_DB: postgres
+            KC_DB_URL: jdbc:postgresql://10.3.1.165:5432/dev_keycloakify
+            KC_DB_USERNAME: keycloak
+            KC_DB_PASSWORD: mQVEoV
+            KC_HEALTH_ENABLED: "true"
+            KC_METRICS_ENABLED: "true"
+
+            # Hostname & proxy settings
+            KC_HOSTNAME_URL: https://dev-sso-core2.civic-services.org
+            KC_HOSTNAME_ADMIN_URL: https://dev-sso-core2.civic-services.org
+            KC_HOSTNAME_STRICT_HTTPS: "true"
+            KC_HOSTNAME_STRICT_BACKCHANNEL: "false"
+            KC_HTTP_ENABLED: "false"
+            KC_PROXY: edge
+            KC_CACHE: local
+
+
+            #Timezone
+            TZ: Asia/Jakarta
+
+        ports:
+            - "9900:8080"
